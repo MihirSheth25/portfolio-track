@@ -22,7 +22,7 @@
      * Can also be closed with 'X' icon in top right corner of tooltip
 
 #### TO-DO
-1. Excel and pdf export components
+1. Excel and PDF export components
    * Make both functionalities dynamically available to be able to use it for any database
      * Any table and filename can be passed into the componenets using the 'exportData' & 'fileName' props but headers are hard-coded
      * Pass props in both components to get headers and number of columns in table
