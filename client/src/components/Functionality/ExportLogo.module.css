@@ -1,0 +1,16 @@
+/* MIHIR SHETH | 11/07/2022 */
+
+.exportLogo {
+  height: 40px;
+  width: 32.8px;
+  margin-bottom: 4px;
+}
+
+.exportLogo:hover {
+  cursor: pointer;
+  background-image: url(./../../img/background.png);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-position: 50% 85%;
+}

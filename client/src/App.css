@@ -1,0 +1,129 @@
+.PrtApp {
+  text-align: center;
+  align-items: center;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.PrtForm {
+  display: flex;
+  flex-direction: column;
+}
+.PrtForm input {
+  width: 100px;
+  height: 30px;
+  margin: 5px;
+  font-size: 10px;
+}
+.PrtForm label {
+  font-size: 100%;
+  text-align: left;
+}
+/*Report download logo*/
+.PrtForm label img {
+  float: right;
+  width: 3%;
+  height: 3%;
+}
+.PrtForm label img:hover {
+  background-color: #eff0f5;
+}
+/*Input Date Textbox*/
+.PrtForm label input {
+  width: 10%;
+  font-size: 100%;
+}
+/*dropdown*/
+.PrtForm select {
+  height: 25%;
+  padding: 5px 10px;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: bold;
+  color: #333;
+  /*align-items: center;*/
+  cursor: pointer;
+  justify-content: space-between;
+}
+/*https://youtu.be/o8Gx_QQUjhQ => Dropdown List/*
+/*dropdown content*/
+.PrtForm select option {
+  position: absolute;
+  top: 90%;
+  left: 0;
+  padding: 5px;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  color: #333;
+  width: 100%;
+}
+/*horizontal line*/
+.PrtHrLine {
+  border: 0;
+  height: 3px;
+  background-color: lightgray;
+}
+
+/* MIHIR SHETH | 11/07/22 */
+.outerContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  align-items: flex-start;
+}
+
+.logoContainer {
+  display: inline-flex;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  justify-content: space-between;
+  width: 72px;
+}
+/* MIHIR SHETH | 11/07/22 */
+
+/*gridview*/
+.PrtGridView {
+  display: grid;
+  padding: 0.25px;
+  /*grid-template-columns: 500px 150px 250px 200px 150px;*/
+  grid-template-columns: 35% 15% 16% 18% 16%;
+  color: #654975;
+  box-shadow: 3px 3px 10px 6px rgba(102, 99, 99, 0.06);
+  font-size: 100%;
+}
+/*gridview header*/
+.PrtGrdHeader {
+  background-color: #b4b6bf /*#d5d8e6*/;
+  color: #654975;
+  padding: 0.25px;
+  font-size: 20px;
+  text-align: left;
+  /*border: 1px solid #654975;*/
+  padding: 2%;
+  font-size: 100%;
+  text-align: left;
+  font-weight: bold;
+}
+/*gridview column*/
+.PrtGrdData {
+  color: #654975;
+  padding: 0.25px;
+  font-size: 20px;
+  text-align: left;
+  border: 1px /*solid #654975*/;
+  padding: 2%;
+  font-size: 100%;
+  text-align: left;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  cursor: default;
+}
+/*alternate rows background color*/
+.PrtGridView:nth-last-child(odd) {
+  background: #d5d8e6;
+}

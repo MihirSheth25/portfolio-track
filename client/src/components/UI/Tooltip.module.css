@@ -1,0 +1,54 @@
+/* MIHIR SHETH | 18/07/2022 */
+
+/* entire tootlip content */
+.ttContent {
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+/* tooltip title and close button box */
+.titleBox {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-between;
+  background-color: lightblue;
+  border-bottom: 1px solid grey;
+}
+
+/* tooltip title text */
+.ttTitleText {
+  font-size: 14px;
+  font-weight: bold;
+  text-align: left;
+  margin: auto 2px auto 3px;
+  color: #2d3033;
+}
+
+/* tooltip content text */
+.ttText {
+  font-size: 13px;
+  margin: 5px 6px 0 6px;
+  color: #3c403d;
+}
+
+/* close button with MUI cross icon inside */
+.ttButton {
+  grid-column: 4;
+  border: none;
+  height: fit-content;
+  width: fit-content;
+  padding: 0;
+  margin: 2px 2px 2px 0;
+  border-radius: 50%;
+  background-color: lightblue;
+}
+
+/* close button color change on hover */
+.ttButton:hover {
+  background-color: #ff3939;
+}
+
+/* close button color change when clicked */
+.ttButton:active {
+  background-color: #a52828;
+}
