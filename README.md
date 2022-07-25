@@ -1,6 +1,6 @@
 # bilav-traklei-website
 
-### React components created:
+### Website created using MySQL, Express, React and Node
 
 1. Extract data from a database grid and export it into an Excel and/or PDF file
    * The 2 react components were created in the functionality folder
