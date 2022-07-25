@@ -2,6 +2,7 @@
 
 ### Website created using MySQL, Express, React and Node
 
+#### Key Features: 
 1. Extract data from a database grid and export it into an Excel and/or PDF file
    * The 2 react components were created in the functionality folder
    * The 2 buttons were added to the portfolio details page
