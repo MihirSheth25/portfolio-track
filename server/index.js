@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors"); //npm install cors
 const mysql = require("mysql2"); //npm install --save mysql2
+const { response } = require("express");
 
 const db = mysql.createPool({
   //const db = mysql.createConnection({
@@ -70,7 +71,9 @@ app.post("/api/getcntdata", (req, res) => {
 {
   /*Execute Select query for Portfolio list from PRTMST table */
 }
-app.get("/api/get", (req, res) => {
+
+/* --- MIHIR SHETH | 05-08-2022 --- */
+app.get("/api/search", (req, res) => {
   const sqlSelect = "call SUBSDB.ProcPrtmstSel();";
   db.query(sqlSelect, (err, result) => {
     if (err == null) {
@@ -81,6 +84,21 @@ app.get("/api/get", (req, res) => {
     }
   });
 });
+/* --- MIHIR SHETH | 05-08-2022 --- */
+
+// app.get("/api/search", (req, res) => {
+//   db.query(
+//     "SELECT * FROM prtmst",
+//     // ! table_name, column_name --> search in db
+//     (err, result) => {
+//       if (err) {
+//         console.log("data not delivered");
+//       } else {
+//         res.send(result);
+//       }
+//     }
+//   );
+// });
 
 {
   /*Execute Select query for Portfolio Change details from PRTDET table with passing selected PRTMSTID, From Date and To Date in where condition*/
