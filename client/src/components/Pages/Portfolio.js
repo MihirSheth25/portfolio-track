@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import "./../../App.css";
 import Axios from "axios"; //npm i axios
 // import { ExportCSV } from "./ExportCSV";
@@ -6,18 +6,83 @@ import { ExportEXC } from "../Functionality/ExportEXC";
 import { ExportPDF } from "../Functionality/ExportPDF";
 
 import ToolTip from "../UI/Tooltip";
+import styles from "./Searchbar.module.css";
+import searchIcon from "./../../assets/searching-svgrepo-com.svg";
 
 function Portfolio() {
   const [PrtnmList, setPrtnmList] = useState(""); //list of Portfolios on grid
   const [PrtcntList, setPrtcntList] = useState([]); //Total Records of Selected Portfolio
   const [PrtdetList, setPrtdetList] = useState([]); //Details of selected Portfolio
 
+  /* --- MIHIR SHETH | 06-08-2022 --- */
+  const SearchBar = () => {
+    const [searchResult, setSearchResult] = useState([]);
+    const onInputChange = useCallback(
+      (e) => {
+        const searchInput = e.target.value;
+        const matchTo = `^${searchInput.toLowerCase()}`;
+        const regex = new RegExp(matchTo, "g");
+        const newFilter = PrtnmList.filter((val) => {
+          return val.portname.toLowerCase().match(regex);
+        });
+
+        if (searchInput === "") {
+          setSearchResult([]);
+        } else {
+          setSearchResult(newFilter);
+        }
+      },
+      [setSearchResult]
+    );
+    // return <input type="text" onChange={onChangeInput} value={textInput} />;
+    return (
+      <div className={styles.searchBar}>
+        <div className={styles.bar}>
+          <input
+            id="searchBar"
+            name="searchBar"
+            type="text"
+            placeholder="Search Portfolio..."
+            autoComplete="off"
+            onChange={onInputChange}
+          />
+          <img
+            className="searchIcon"
+            src={searchIcon}
+            alt="Search for portfolio"
+          />
+        </div>
+        {searchResult.length !== 0 && (
+          <div className={styles.result}>
+            {searchResult.map((val, prtmstid) => {
+              return (
+                <ul>
+                  <li
+                    key={prtmstid}
+                    idValue={val.prtmstid}
+                    className={styles.resultItem}
+                    onClick={onddlChange}
+                  >
+                    {val.portname}
+                  </li>
+                </ul>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  };
+  /* --- MIHIR SHETH | 06-08-2022 --- */
+
+  /* --- MIHIR SHETH | 05-08-2022 --- */
   //fetch Portfolio names
   useEffect(() => {
-    Axios.get("http://localhost:3001/api/get")
+    Axios.get("http://localhost:3001/api/search")
       .then((Response) => {
         //console.log(Response.data);
         // if (Response.data === "")
+        // setPrtnmList(Response.data);
         setPrtnmList(Response.data);
       })
       .catch((error) => {
@@ -27,10 +92,12 @@ function Portfolio() {
       });
   }, []);
   // if (typeof PrtnmList != 'object' && PrtnmList.substring(0, 5) === 'Error') { alert(PrtnmList) }
+  /* --- MIHIR SHETH | 05-08-2022 --- */
 
   //On 'Onddlchange' event, fetch Portfolio details and Total Record counts by passing Prtmstid
   const onddlChange = (e) => {
-    const prtmstid = e.target.value;
+    const prtmstid = e.target.getAttribute("idValue");
+    // console.log("THE PORTFOLIO ID IS CLIENT -->", prtmstid);
     Axios.post("http://localhost:3001/api/getdata", {
       prtmstid: prtmstid,
       prtcnt: false,
@@ -60,25 +127,9 @@ function Portfolio() {
     <div className="PrtApp">
       <h1>PORTFOLIO DETAILS</h1>
       <div className="PrtForm">
-        <label>
-          Portfolio :*
-          {/*https://youtu.be/o8Gx_QQUjhQ => Dropdown List */}
-          {/*dropdown for list of portfolios and call 'OnChange' event while selecting Portfolio*/}
-          <select name="Prtlist" id="Prtlist" onChange={onddlChange}>
-            {/* <select  name = "Prtlist" id= "Prtlist">*/}
-            <option value="0">Select</option>{" "}
-            {/*default Select value dropdown*/}
-            {/* display portfolios list on dropdown from PrtnmList*/}
-            {PrtnmList.length > 0 &&
-              PrtnmList.map((val, prtmstid) => {
-                return (
-                  <option key={prtmstid} value={prtmstid}>
-                    {val.portname}{" "}
-                  </option>
-                );
-              })}
-          </select>
-        </label>
+        {/* --- MIHIR SHETH | 06-08-2022 --- */}
+        <SearchBar />
+        {/* --- MIHIR SHETH | 06-08-2022 --- */}
 
         {/*horizontal line*/}
         <div>
